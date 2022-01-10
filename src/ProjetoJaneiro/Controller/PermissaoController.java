@@ -2,6 +2,7 @@ package ProjetoJaneiro.Controller;
 
 import ProjetoJaneiro.Connection.ConnectionFactory;
 import ProjetoJaneiro.Dao.PermissaoDAO;
+import ProjetoJaneiro.Domain.Permissao;
 
 import java.sql.Connection;
 
@@ -17,4 +18,12 @@ public PermissaoController() {
         e.printStackTrace();
     }
 }
+
+    public void cadastrarPermissao(Permissao codigoPermissao) {
+        this.permissaoDAO.cadastrarPermissao(codigoPermissao);
+    }
+
+    public void excluirPermissao(int codigopermissao) {
+        this.permissaoDAO.excluirPermissao(codigopermissao);
+    }
 }
