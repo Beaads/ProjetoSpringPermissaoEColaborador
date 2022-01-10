@@ -11,24 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PermissaoColaboradorDAO {
-
     private Connection connection;
     private Colaborador colaborador;
     private Permissao permissao;
 
-    public PermissaoColaboradorDAO(Connection connection)  {
+    public PermissaoColaboradorDAO(Connection connection) {
         this.connection = connection;
     }
 
-
     public void cadastrarPermissaoColaborador(Integer codigoPermissao, Integer codigoColaborador) {
         try {
-            PreparedStatement stmValidation = connection.prepareStatement("SELECT CODIGOPERMISSAO_PERMISSAO FROM COLABORADOR_PERMISSAO WHERE CODIGOPERMISSAO_PERMISSAO = ?");
+            PreparedStatement stmValidation = connection.prepareStatement(
+                    "SELECT CODIGOPERMISSAO_PERMISSAO FROM COLABORADOR_PERMISSAO " +
+                            "WHERE CODIGOPERMISSAO_PERMISSAO = ?");
             stmValidation.setInt(1, codigoPermissao);
             ResultSet resultadoValidation = stmValidation.executeQuery();
             if (resultadoValidation.next()) {
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,20 +35,24 @@ public class PermissaoColaboradorDAO {
 
     public void validacaoPermissaoColaborador(Integer permissao, Integer colaborador) {
         try {
-            PreparedStatement stm = connection.prepareStatement("INSERT INTO COLABORADOR_PERMISSAO (CODIGOPERMISSAO_PERMISSAO, CODIGOCOLABORADOR_COLABORADOR) VALUES (?, ?)");
+            PreparedStatement stm = connection.prepareStatement(
+                    "INSERT INTO COLABORADOR_PERMISSAO (" +
+                            "CODIGOPERMISSAO_PERMISSAO, CODIGOCOLABORADOR_COLABORADOR) VALUES (?, ?)");
             stm.setInt(1, permissao);
             stm.setInt(2, colaborador);
 
             stm.execute();
-
             connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void excluirPermissaoColaborador(Integer permissao, Integer colaborador) {
-        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM COLABORADOR_PERMISSAO WHERE (CODIGOPERMISSAO_PERMISSAO, CODIGOCOLABORADOR_COLABORADOR) = (?, ?)")) {
+        try (PreparedStatement stm = connection.prepareStatement(
+                "DELETE FROM COLABORADOR_PERMISSAO WHERE (" +
+                        "CODIGOPERMISSAO_PERMISSAO, CODIGOCOLABORADOR_COLABORADOR) = (?, ?)")) {
             stm.setInt(1, permissao);
             stm.setInt(2, colaborador);
 

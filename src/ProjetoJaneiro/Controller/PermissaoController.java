@@ -9,15 +9,15 @@ import java.sql.Connection;
 
 public class PermissaoController {
 
-private PermissaoDAO permissaoDAO;
+    private PermissaoDAO permissaoDAO;
 
-public PermissaoController() {
-    try (Connection connection = new ConnectionFactory().recuperarConexao()) {
-        this.permissaoDAO = new PermissaoDAO(connection);
-    } catch (Exception e) {
-        e.printStackTrace();
+    public PermissaoController() {
+        try (Connection connection = new ConnectionFactory().recuperarConexao()) {
+            this.permissaoDAO = new PermissaoDAO(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 
     public void cadastrarPermissao(Permissao codigoPermissao) {
         this.permissaoDAO.cadastrarPermissao(codigoPermissao);

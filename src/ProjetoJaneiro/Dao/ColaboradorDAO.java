@@ -12,11 +12,14 @@ public class ColaboradorDAO {
 
     private Connection connection;
 
-    public ColaboradorDAO(Connection connection) { this.connection = connection; }
+    public ColaboradorDAO(Connection connection) {
+        this.connection = connection;
+    }
 
     public void cadastrarColaborador(Colaborador colaborador) {
         try (Connection connection = new ConnectionFactory().recuperarConexao()) {
-            PreparedStatement stm = connection.prepareStatement("INSERT INTO COLABORADOR (CODIGOCOLABORADOR, NOMECOLABORADOR, DATANASCIMENTO) VALUES (?, ?, ?)");
+            PreparedStatement stm = connection.prepareStatement("INSERT INTO COLABORADOR (CODIGOCOLABORADOR," +
+                    " NOMECOLABORADOR, DATANASCIMENTO) VALUES (?, ?, ?)");
             stm.setInt(1, colaborador.getCodigoColaborador());
             stm.setString(2, colaborador.getNomeColaborador());
             stm.setString(3, colaborador.getDataNascimento());
@@ -31,23 +34,36 @@ public class ColaboradorDAO {
                 System.out.println(nomeColaborador);
                 String dataNascimento = rst.getString("DATANASCIMENTO");
                 System.out.println(dataNascimento);
-
             }
-
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public void excluirColaborador(int codigocolaborador) {
-        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM COLABORADOR WHERE CODIGOCOLABORADOR = ?")) {
-            stm.setInt(1, codigocolaborador);
+        try (Connection connection = new ConnectionFactory().recuperarConexao()) {
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM COLABORADOR WHERE " +
+                    "CODIGOCOLABORADOR = ?");
+            {
+                stm.setInt(1, codigocolaborador);
 
-            stm.execute();
+                stm.execute();
 
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
+//        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM COLABORADOR WHERE " +
+//                "CODIGOCOLABORADOR = ?")) {
+//            stm.setInt(1, codigocolaborador);
+//
+//            stm.execute();
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }

@@ -17,6 +17,7 @@ public class ColaboradorController {
             e.printStackTrace();
         }
     }
+
     public void cadastrarColaborador(Colaborador colaborador) {
         this.colaboradorDAO.cadastrarColaborador(colaborador);
     }
