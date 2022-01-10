@@ -21,8 +21,8 @@ public class ColaboradorController {
         this.colaboradorDAO.cadastrarColaborador(colaborador);
     }
 
-    public void excluirColaborador(int codigoColaborador) {
-        this.colaboradorDAO.excluirColaborador(codigoColaborador);
+    public void excluirColaborador(int colaborador) {
+        this.colaboradorDAO.excluirColaborador(colaborador);
     }
 }
 

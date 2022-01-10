@@ -28,21 +28,21 @@ public class Main {
 
 
             PermissaoController permissaoController = new PermissaoController();
-            permissaoController.cadastrarPermissao(permissaoParaSairMaisCedo);
-            permissaoController.cadastrarPermissao(permissaoParaMexerJira);
-            permissaoController.cadastrarPermissao(permissaoParaMexerJiraa);
-            permissaoController.cadastrarPermissao(permissaoParaAbrirEmail);
-            permissaoController.cadastrarPermissao(permissaoParaFalarNoDaily);
-            permissaoController.cadastrarPermissao(permissaoParaTocarBerrante);
-          //permissaoController.excluirPermissao(10);
+//            permissaoController.cadastrarPermissao(permissaoParaSairMaisCedo);
+//            permissaoController.cadastrarPermissao(permissaoParaMexerJira);
+//            permissaoController.cadastrarPermissao(permissaoParaMexerJiraa);
+//            permissaoController.cadastrarPermissao(permissaoParaAbrirEmail);
+//            permissaoController.cadastrarPermissao(permissaoParaFalarNoDaily);
+//            permissaoController.cadastrarPermissao(permissaoParaTocarBerrante);
+//            permissaoController.excluirPermissao(10);
 
 
-//            ColaboradorController colaboradorController = new ColaboradorController();
+           ColaboradorController colaboradorController = new ColaboradorController();
 //            colaboradorController.cadastrarColaborador(colaboradoraLarissa);
 //            colaboradorController.cadastrarColaborador(colaboradoraBeatriz);
 //            colaboradorController.cadastrarColaborador(colaboradoraBeatrizz);
-//            colaboradorController.cadastrarColaborador(colaboradorDidi);
-        //    colaboradorController.excluirColaborador();
+    //        colaboradorController.cadastrarColaborador(colaboradorDidi);
+            colaboradorController.excluirColaborador(3);
 
 //
 //            PermissaoColaboradorController permissaoColaboradorController = new PermissaoColaboradorController();

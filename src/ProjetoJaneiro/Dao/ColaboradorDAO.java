@@ -40,7 +40,7 @@ public class ColaboradorDAO {
         }
     }
 
-    public void excluirColaborador(Integer codigocolaborador) {
+    public void excluirColaborador(int codigocolaborador) {
         try (PreparedStatement stm = connection.prepareStatement("DELETE FROM COLABORADOR WHERE CODIGOCOLABORADOR = ?")) {
             stm.setInt(1, codigocolaborador);
 

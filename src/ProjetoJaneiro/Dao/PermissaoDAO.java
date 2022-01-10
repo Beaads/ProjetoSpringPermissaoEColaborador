@@ -37,7 +37,7 @@ public class PermissaoDAO {
         }
     }
 
-    public void excluirPermissao(int codigopermissao) {
+    public void excluirPermissao(Integer codigopermissao) {
         try (PreparedStatement stm = connection.prepareStatement("DELETE FROM PERMISSAO WHERE CODIGOPERMISSAO = ?")) {
 
             stm.setInt(1, codigopermissao);
